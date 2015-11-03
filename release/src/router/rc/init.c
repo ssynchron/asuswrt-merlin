@@ -1209,7 +1209,7 @@ restore_defaults(void)
 		case MODEL_PLN12:
 		case MODEL_PLAC56:
 		case MODEL_PLAC66U:
-			nvram_set("reboot_time", "80"); // default is 70 sec			break;
+			nvram_set("reboot_time", "80"); // default is 70 sec
 			break;
 #endif
 		default:
@@ -4320,7 +4320,7 @@ int init_nvram(void)
 		add_rc_support("WIFI_LOGO");
 		add_rc_support("nandflash");
 #ifdef RTCONFIG_PUSH_EMAIL
-		add_rc_support("feedback");
+//		add_rc_support("feedback");
 #endif
 #ifdef RTCONFIG_LED_BTN
 		nvram_set_int("AllLED", 1);
@@ -6501,7 +6501,8 @@ if (nvram_match("commit_test", "1")) {
 		} while (ret);
 #ifdef RTCONFIG_BCMARM
 		/* free pagecache */
-//		f_write_string("/proc/sys/vm/drop_caches", "1", 0, 0);
+		if (nvram_get_int("drop_caches"))
+			f_write_string("/proc/sys/vm/drop_caches", "1", 0, 0);
 #endif
 	}
 
