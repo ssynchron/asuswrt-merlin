@@ -364,6 +364,7 @@ void start_usb(void)
 		if(nvram_get_int("usb_qmi"))
 			modprobe("qmi_wwan");
 		modprobe("cdc_mbim");
+        modprobe("huawei_cdc_ncm");
 #endif
 #endif
 	}

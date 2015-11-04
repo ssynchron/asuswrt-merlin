@@ -48,6 +48,7 @@ testXPath
 testapi
 testchar
 testdict
+testlimits
 testrecurse
 xml2Conf.sh
 xmlcatalog
